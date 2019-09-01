@@ -20,7 +20,7 @@
       title="修改"
     >
       <el-form :model="formObj">
-        <el-form-item label="用户名">
+        <el-form-item label="组件名字">
           <el-input v-model="formObj.name" autocomplete="off"></el-input>
         </el-form-item>
       </el-form>
@@ -152,12 +152,17 @@ export default {
       this.formObj.name = obj.name
     },
     handleSubmit() {
+      const id = this.selectObj.id
+      delete this.selectObj.id
+      delete this.selectObj._show
       this.dialogFormVisible = false
-      this.$message.success('操作成功')
-      return this.$axios.put(
-        'http://localhost:3000/mock/11/api/v1/',
-        this.selectObj,
-      )
+      return this.$axios
+        .put(`/components/${id}`, this.formObj)
+        .then(res => {
+          Object.assign(this.selectObj, res.data);
+          this.$message.success('操作成功')
+        })
+        .catch(err => {})
     },
   },
 }
