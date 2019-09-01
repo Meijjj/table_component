@@ -6,13 +6,12 @@ install:
 script:
   - npm run build
 env:
-  - PUBLIC_PATH=https://meijjj.github.io/table_component/
-  - NO_LOGIN=1
-  - MODE=mock
+  global:
+    - PUBLIC_PATH=https://meijjj.github.io/table_component/
+    - NO_LOGIN=1
+    - MODE=mock
 cache: npm
 deploy:
-  edge:
-    branch: v1.8.47
   provider: pages
   skip-cleanup: true
   keep-history: true
