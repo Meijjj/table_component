@@ -6,7 +6,7 @@ const {env} = process
 
 const isProd = env.MODE == 'prod'
 const mockServer =
-  'http://yapi.demo.qunar.com/mock/91195/api/v1'
+  'http://localhost:3000/mock/11/api/v1'
 
 // 不能以斜杠结尾
 let apiServer = env.API_SERVER
