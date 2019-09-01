@@ -7,6 +7,8 @@ script:
   - npm build
 cache: npm
 deploy:
+  edge:
+    branch: v1.8.47
   provider: pages
   skip-cleanup: true
   keep-history: true
